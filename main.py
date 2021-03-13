@@ -16,7 +16,7 @@ rows = int(HEIGHT / RESOLUTION)
 
 myFont = pygame.font.SysFont('Arial', 40)
 
-button1 = Button("Click herefdfhdfgh", x=250, y=520, bg="navy")
+button1 = Button("Click here", x=250, y=520, bg="navy")
 
 def show_button1():
     WIN.blit(button1.surface, (button1.x, button1.y))
@@ -25,7 +25,8 @@ def button1_click(event):
     x, y = pygame.mouse.get_pos()
     if event.type == pygame.MOUSEBUTTONDOWN:
         if pygame.mouse.get_pressed()[0]:
-            button1.change_text("Clicked", bg="red")
+            if button1.rect.collidedict(x, y):
+                button1.change_text("Clicked", bg="red")
 
 
 def make_2d_array():
