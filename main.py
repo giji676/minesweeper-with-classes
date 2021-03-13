@@ -1,4 +1,5 @@
 from other_stuff.constants import WIDTH, HEIGHT, RESOLUTION, FPS, LIGHT_GRAY, TOTAL_MINES, BLACK, DARK_GRAY, WHITE, RED
+from other_stuff.Button import Button
 from other_stuff.Cell import Cell
 import random
 import pygame
@@ -14,6 +15,17 @@ cols = int(WIDTH / RESOLUTION)
 rows = int(HEIGHT / RESOLUTION)
 
 myFont = pygame.font.SysFont('Arial', 40)
+
+button1 = Button("Click herefdfhdfgh", x=250, y=520, bg="navy")
+
+def show_button1():
+    WIN.blit(button1.surface, (button1.x, button1.y))
+
+def button1_click(event):
+    x, y = pygame.mouse.get_pos()
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        if pygame.mouse.get_pressed()[0]:
+            button1.change_text("Clicked", bg="red")
 
 
 def make_2d_array():
@@ -172,6 +184,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                button1_click(event)
+        show_button1()
         draw(grid)
         check_for_win(grid)
 
