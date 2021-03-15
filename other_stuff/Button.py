@@ -1,6 +1,7 @@
 import pygame
 
 pygame.init()
+pygame.font.init()
 font = pygame.font.SysFont("Arial", 40)
 
 
@@ -15,6 +16,5 @@ class Button:
         self.size = self.text.get_size()
         self.surface = pygame.Surface(self.size)
         self.surface.fill(bg)
-        self.surface.blit(self.text, (self.x, self.y))
         self.surface.blit(self.text, (self.x, self.y))
         self.rect = pygame.Rect(self.x, self.y, self.size[0], self.size[1])

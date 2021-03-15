@@ -1,4 +1,4 @@
-from other_stuff.constants import WIDTH, HEIGHT, RESOLUTION, FPS, LIGHT_GRAY, TOTAL_MINES, BLACK, DARK_GRAY, WHITE, RED
+from other_stuff.constants import WIDTH, HEIGHT, RESOLUTION, FPS, LIGHT_GRAY, TOTAL_MINES, DARK_GRAY, WHITE, RED
 from other_stuff.Button import Button
 from other_stuff.Cell import Cell
 import random
@@ -25,9 +25,8 @@ def button1_click(event):
     x, y = pygame.mouse.get_pos()
     if event.type == pygame.MOUSEBUTTONDOWN:
         if pygame.mouse.get_pressed()[0]:
-            if button1.rect.collidedict(x, y):
+            if button1.rect.collidepoint(x, y):
                 button1.change_text("Clicked", bg="red")
-
 
 def make_2d_array():
     arr = []
@@ -136,9 +135,9 @@ def inputs(grid, mouse_events):
     if mouse_events[0]:
         if grid[x][y].bomb:
             print("EXPLODED")
-            time.sleep(3)
-            main()
-            return
+            #time.sleep(3)
+            #main()
+            #return
 
         elif not grid[x][y].revealed:
             mines = count_mines(grid, x, y)
@@ -183,12 +182,12 @@ def main():
             grid = inputs(grid, mouse_events)
 
         for event in pygame.event.get():
+            button1_click(event)
             if event.type == pygame.QUIT:
                 run = False
-                button1_click(event)
         show_button1()
         draw(grid)
-        check_for_win(grid)
+        #check_for_win(grid)
 
         pygame.display.update()
     pygame.quit()
