@@ -14,7 +14,7 @@ pygame.font.init()
 cols = int(WIDTH / RESOLUTION)
 rows = int(HEIGHT / RESOLUTION)
 
-myFont = pygame.font.SysFont('Arial', 40)
+myFont = pygame.font.SysFont('Arial', RESOLUTION)
 
 button1 = Button("Click here", x=250, y=520, bg="navy")
 
